@@ -40,6 +40,7 @@
     </main>
 
     <script src="{!! url('assets/bootstrap/js/bootstrap.bundle.min.js') !!}"></script>
+    <script src="{!! url('assets/dist/js/adminlte.min.js') !!}"></script>
       
   </body>
 </html>
