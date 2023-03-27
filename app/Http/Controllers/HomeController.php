@@ -17,4 +17,13 @@ class HomeController extends Controller
 				Cookie::queue("name_user",$name,3600);
 				return redirect()->back();
 			}
+    public function saveAvatar(Request $request){
+				$request -> validate([
+                    "avatar"=>'required|image'
+                ]);
+                // $avatarName= time()."."-".$request-> avatar->getClientOrinalExtension
+                
+                
+			}
+    
 }
