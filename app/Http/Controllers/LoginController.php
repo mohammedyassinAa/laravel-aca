@@ -35,8 +35,9 @@ class LoginController extends Controller
         endif;
 
         $user = Auth::getProvider()->retrieveByCredentials($credentials);
-
-        Auth::login($user);
+        $remember =$request -> get('remember'); 
+        
+        Auth::login($user,$remember);
 
         return $this->authenticated($request, $user);
     }

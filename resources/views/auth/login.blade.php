@@ -25,8 +25,13 @@
                 <span class="text-danger text-left">{{ $errors->first('password') }}</span>
             @endif
         </div>
-
+        <div>
+            <label for="">Remember Me </label>
+            <input type="checkbox" name="remember" id="remember">
+        </div>
         <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+
+
         
         @include('auth.partials.copy')
     </form>

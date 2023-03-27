@@ -39,6 +39,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         /**
          * Logout Routes
          */
+        Route::post('/saveCookie', 'HomeController@saveCookie')->name('saveCookie');
+
         Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
     });
 });
