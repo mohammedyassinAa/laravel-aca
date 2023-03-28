@@ -21,9 +21,9 @@ class HomeController extends Controller
 				$request -> validate([
                     "avatar"=>'required|image'
                 ]);
-                // $avatarName= time()."."-".$request-> avatar->getClientOrinalExtension
-                
-                
+                $avatarName= time().".".$request->avatar->getClientOrinalExtension ;
+                $request -> avatar -> move(public_path('avatar'),avatarName);
+                Auth()->user()->update(['avatar' => $avatarName]);
+                return back()->with('sucess','avatar updated');
 			}
-    
-}
+        }
