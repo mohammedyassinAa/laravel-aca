@@ -38,7 +38,11 @@
         <br><br><br>
         <a href="{{ route('UserExport')}}"  class="btn btn-lg btn-primary">Export</a>
                 <br><br><br>
-        <a href="{{ route('UserExport')}}"  class="btn btn-lg btn-primary">Import</a>
+        <form action="{{ route('UserImport') }}" method="post" enctype="multipart/form-data">
+            @csrf
+            <input type="file" name="file">
+            <button type="submit">Import</button>     
+        </form>
 
         @endauth
 

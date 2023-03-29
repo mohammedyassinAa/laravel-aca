@@ -44,6 +44,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
         Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
         Route::get('users/export/', 'HomeController@export')->name('UserExport');
+        Route::post('users/import/', 'HomeController@import')->name('UserImport');
+
+        
 
     });
 });

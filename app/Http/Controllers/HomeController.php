@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Cookie;
 use Illuminate\Http\UploadFile;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\UsersExport;
+use App\Imports\UsersImport;
 
 
 
@@ -35,4 +36,9 @@ class HomeController extends Controller
             {
                 return Excel::download(new UsersExport, 'users.xlsx');
             }
+     public function import() 
+    {
+        Excel::import(new UsersImport,request()->file('file'));              
+        return back();
+    }
         }
