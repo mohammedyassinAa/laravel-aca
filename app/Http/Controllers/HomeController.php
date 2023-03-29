@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Http\UploadFile;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\UsersExport;
+
+
 
 class HomeController extends Controller
 {
@@ -21,9 +26,13 @@ class HomeController extends Controller
 				$request -> validate([
                     "avatar"=>'required|image'
                 ]);
-                $avatarName= time().".".$request->avatar->getClientOrinalExtension ;
-                $request -> avatar -> move(public_path('avatar'),avatarName);
+                $avatarName= time().".".$request->avatar->getClientOriginalExtension() ;
+                $request->avatar-> move(public_path('avatars'),$avatarName);
                 Auth()->user()->update(['avatar' => $avatarName]);
                 return back()->with('sucess','avatar updated');
 			}
+    public function export() 
+            {
+                return Excel::download(new UsersExport, 'users.xlsx');
+            }
         }

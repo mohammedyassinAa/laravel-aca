@@ -19,21 +19,27 @@
             <input type="text" id="txt_Name" name="txt_Name">
             <button class=" btn btn-lg btn-primary" type="submit" >Save</button>
         </form>
-        <form method="post" action="avatar" enctype="multipart/form-data">
+        <form method="post" action="saveAvatar" enctype="multipart/form-data">
             @csrf
             <div>
                 <input type="file" name="avatar" id="avatar"
-                class="form-control"@error('avatar') is-invalid @end error value="{{ old('avatar') }}" required autocomplete="avatar">
+                class="form-control"@error('avatar') is-invalid @enderror value="{{ old('avatar') }}" required autocomplete="avatar">
                 <img src="/avatars/{{ Auth::user()-> avatar }}" style="width: 100px"/>
                 @error("avatar")
                     <span>
-                        <strong>{{ message}}</strong>
+                        <strong>{{$message}}</strong>
                     </span>
                 @enderror
-                <button type="">{{ __('Save') }}</button>
+                <button>{{ __('Save') }}</button>
             </div>
+
             
         </form>
+        <br><br><br>
+        <a href="{{ route('UserExport')}}"  class="btn btn-lg btn-primary">Export</a>
+                <br><br><br>
+        <a href="{{ route('UserExport')}}"  class="btn btn-lg btn-primary">Import</a>
+
         @endauth
 
         @guest
